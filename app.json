@@ -25,12 +25,22 @@
     "plugins": [
       "expo-router",
       [
+        "expo-font",
+        {
+          "fonts": [
+            "node_modules/@expo-google-fonts/nunito/Nunito_400Regular.ttf",
+            "node_modules/@expo-google-fonts/nunito/Nunito_600SemiBold.ttf",
+            "node_modules/@expo-google-fonts/nunito/Nunito_700Bold.ttf",
+            "node_modules/@expo-google-fonts/lato/Lato_400Regular.ttf"
+          ]
+        }
+      ],
+      [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "image": "./assets/images/splash-screen.png",
+          "resizeMode": "cover",
+          "backgroundColor": "#1A7F65"
         }
       ]
     ],
