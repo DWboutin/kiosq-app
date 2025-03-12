@@ -1,6 +1,19 @@
 export type Theme = {
   colors: {
-    white: string;
+    neutral: {
+      white: string;
+      lightest: string;
+      light: string;
+      medium: string;
+      darker: string;
+      black: string;
+    };
+    primary: {
+      lightest: string;
+      light: string;
+      medium: string;
+      dark: string;
+    };
   };
   fonts: {
     family: {
@@ -11,15 +24,33 @@ export type Theme = {
       };
       Lato: {
         Regular: string;
-        Semibold: string;
+        Bold: string;
       };
     };
+  };
+  borderRadius: {
+    small: number;
+    medium: number;
+    large: number;
   };
 };
 
 export const theme: Theme = {
   colors: {
-    white: "#FFFFFF",
+    neutral: {
+      white: "#FFFFFF",
+      lightest: "#F3F3F3",
+      light: "#E0E0E0",
+      medium: "#9398A1",
+      darker: "#43454D",
+      black: "#202020",
+    },
+    primary: {
+      lightest: "#A5F471",
+      light: "#80D488",
+      medium: "#1A7F65",
+      dark: "#086049",
+    },
   },
   fonts: {
     family: {
@@ -30,8 +61,13 @@ export const theme: Theme = {
       },
       Lato: {
         Regular: "Lato_400Regular",
-        Semibold: "Lato_700Bold",
+        Bold: "Lato_700Bold",
       },
     },
+  },
+  borderRadius: {
+    small: 4,
+    medium: 8,
+    large: 16,
   },
 };

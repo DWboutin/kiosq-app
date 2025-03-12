@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 0,
     marginTop: -20,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.neutral.white,
   },
   innerContent: {
     minHeight: "100%",
