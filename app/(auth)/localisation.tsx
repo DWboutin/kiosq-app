@@ -1,20 +1,18 @@
 import { theme } from "@/components/atoms/theme/theme";
-import { View, Text, Image, StyleSheet, Dimensions, Button } from "react-native";
-import { router } from "expo-router";
+import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
-          source={require("@/assets/images/town-image.png")}
+          source={require("@/assets/images/localisation-image.png")}
           style={styles.headerImage}
           resizeMode="cover"
         />
       </View>
       <View style={styles.textContainer}>
         <Text>Hello</Text>
-        <Button title="Go to Localisation" onPress={() => router.push("/localisation")} />
       </View>
     </View>
   );
@@ -43,8 +41,7 @@ const styles = StyleSheet.create({
   textContainer: {
     padding: 16,
     alignItems: "center",
-    backgroundColor: "gray",
+    backgroundColor: "red",
     flex: 1,
-    zIndex: 10,
   },
 });
