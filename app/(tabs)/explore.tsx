@@ -1,38 +1,58 @@
-import { StyleSheet, Image, Platform, View, Text } from "react-native";
-
-import ParallaxScrollView from "@/components/parallax-scroll-view";
+import { StyleSheet, View, Text, Pressable, SafeAreaView } from "react-native";
+import { useCallback } from "react";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { CategoryButtons } from "@/components/sections/category-buttons/category-buttons";
+import { BottomSheetProvider } from "@/components/bottom-sheet/bottom-sheet-provider";
+import { CustomBottomSheet } from "@/components/bottom-sheet/custom-bottom-sheet";
+import { useBottomSheet } from "@/components/bottom-sheet/hooks/use-bottom-sheet";
 
 export default function ExploreScreen() {
+  // Use our custom hook to manage the bottom sheet
+  const { ref: bottomSheetRef, present: presentBottomSheet } = useBottomSheet();
+
+  // Log sheet changes
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log("handleSheetChanges", index);
+  }, []);
+
+  // Handle button press to present the modal
+  const handlePresentModalPress = useCallback(() => {
+    presentBottomSheet();
+  }, [presentBottomSheet]);
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
-      headerImage={
+    <BottomSheetProvider>
+      <SafeAreaView style={styles.container}>
         <IconSymbol
           size={310}
           color="#808080"
           name="chevron.left.forwardslash.chevron.right"
           style={styles.headerImage}
         />
-      }
-    >
-      <View>
-        <CategoryButtons />
-      </View>
-    </ParallaxScrollView>
+
+        <CustomBottomSheet
+          initialIndex={1}
+          snapPoints={["25%", "50%", "100%"]}
+          onSheetChanges={handleSheetChanges}
+          autoPresent={true}
+        >
+          <CategoryButtons />
+        </CustomBottomSheet>
+      </SafeAreaView>
+    </BottomSheetProvider>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: "relative",
+    backgroundColor: "#f0f0f0",
+  },
   headerImage: {
     color: "#808080",
     bottom: -90,
     left: -35,
     position: "absolute",
-  },
-  titleContainer: {
-    flexDirection: "row",
-    gap: 8,
   },
 });

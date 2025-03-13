@@ -28,10 +28,13 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
     gap: 16,
+    padding: 24,
+    paddingTop: 16,
   },
   gridContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "space-between",
     gap: 16,
   },
 });
