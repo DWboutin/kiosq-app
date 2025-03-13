@@ -14,6 +14,44 @@ export type Theme = {
       medium: string;
       dark: string;
     };
+    categories: {
+      preparedMeals: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+      clothes: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+      fruits: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+      vegetables: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+      craftsmanship: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+      bakery: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+      coffeeShop: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+      selfcare: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+      alcohol: {
+        backgroundColor: string;
+        contentColor: string;
+      };
+    };
   };
   fonts: {
     family: {
@@ -26,12 +64,17 @@ export type Theme = {
         Regular: string;
         Bold: string;
       };
+      Inter: {
+        Regular: string;
+        Semibold: string;
+      };
     };
   };
   borderRadius: {
     small: number;
     medium: number;
     large: number;
+    xlarge: number;
   };
 };
 
@@ -51,6 +94,44 @@ export const theme: Theme = {
       medium: "#1A7F65",
       dark: "#086049",
     },
+    categories: {
+      preparedMeals: {
+        backgroundColor: "#EEEAFE",
+        contentColor: "#63559D",
+      },
+      clothes: {
+        backgroundColor: "#E2FAD2",
+        contentColor: "#506740",
+      },
+      fruits: {
+        backgroundColor: "#FFE3EE",
+        contentColor: "#855568",
+      },
+      vegetables: {
+        backgroundColor: "#FFF2DB",
+        contentColor: "#A67D33",
+      },
+      craftsmanship: {
+        backgroundColor: "#D6F0FF",
+        contentColor: "#347893",
+      },
+      bakery: {
+        backgroundColor: "#FFF2DB",
+        contentColor: "#806941",
+      },
+      coffeeShop: {
+        backgroundColor: "#715D50",
+        contentColor: "#FAE1D2",
+      },
+      selfcare: {
+        backgroundColor: "#3E7777",
+        contentColor: "#DEFBFB",
+      },
+      alcohol: {
+        backgroundColor: "#7C3335",
+        contentColor: "#FFDDDE",
+      },
+    },
   },
   fonts: {
     family: {
@@ -63,11 +144,16 @@ export const theme: Theme = {
         Regular: "Lato_400Regular",
         Bold: "Lato_700Bold",
       },
+      Inter: {
+        Regular: "Inter_400Regular",
+        Semibold: "Inter_600SemiBold",
+      },
     },
   },
   borderRadius: {
     small: 4,
     medium: 8,
     large: 16,
+    xlarge: 20,
   },
 };

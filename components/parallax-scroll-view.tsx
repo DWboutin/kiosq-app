@@ -1,17 +1,20 @@
-import type { PropsWithChildren, ReactElement } from 'react';
-import { StyleSheet } from 'react-native';
+import type { PropsWithChildren, ReactElement } from "react";
+import { StyleSheet, View, Dimensions } from "react-native";
 import Animated, {
   interpolate,
   useAnimatedRef,
   useAnimatedStyle,
   useScrollViewOffset,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
-import { ThemedView } from '@/components/ThemedView';
-import { useBottomTabOverflow } from '@/components/ui/TabBarBackground';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { ThemedView } from "@/components/ThemedView";
+import { useBottomTabOverflow } from "@/components/ui/TabBarBackground";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { theme } from "@/components/atoms/theme/theme";
+import { Colors } from "@/constants/Colors";
 
-const HEADER_HEIGHT = 250;
+const HEADER_HEIGHT = 480;
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 type Props = PropsWithChildren<{
   headerImage: ReactElement;
@@ -23,7 +26,7 @@ export default function ParallaxScrollView({
   headerImage,
   headerBackgroundColor,
 }: Props) {
-  const colorScheme = useColorScheme() ?? 'light';
+  const colorScheme = useColorScheme() ?? "light";
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
   const bottom = useBottomTabOverflow();
@@ -44,22 +47,39 @@ export default function ParallaxScrollView({
     };
   });
 
+  // Calculate minimum content height (screen height minus header height plus overlap)
+  const minContentHeight = SCREEN_HEIGHT - HEADER_HEIGHT + 20; // 20 is the overlap value
+
   return (
     <ThemedView style={styles.container}>
       <Animated.ScrollView
         ref={scrollRef}
         scrollEventThrottle={16}
         scrollIndicatorInsets={{ bottom }}
-        contentContainerStyle={{ paddingBottom: bottom }}>
+        contentContainerStyle={{
+          paddingBottom: bottom,
+          flexGrow: 1, // Ensures content can grow to fill available space
+        }}
+      >
         <Animated.View
           style={[
             styles.header,
             { backgroundColor: headerBackgroundColor[colorScheme] },
             headerAnimatedStyle,
-          ]}>
+          ]}
+        >
           {headerImage}
         </Animated.View>
-        <ThemedView style={styles.content}>{children}</ThemedView>
+        <View
+          style={[
+            styles.content,
+            {
+              minHeight: minContentHeight,
+            },
+          ]}
+        >
+          {children}
+        </View>
       </Animated.ScrollView>
     </ThemedView>
   );
@@ -67,16 +87,22 @@ export default function ParallaxScrollView({
 
 const styles = StyleSheet.create({
   container: {
+    display: "flex",
     flex: 1,
+    borderRadius: theme.borderRadius.xlarge,
+    overflow: "hidden",
   },
   header: {
     height: HEADER_HEIGHT,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   content: {
     flex: 1,
     padding: 32,
     gap: 16,
-    overflow: 'hidden',
+    borderTopLeftRadius: theme.borderRadius.xlarge,
+    borderTopRightRadius: theme.borderRadius.xlarge,
+    marginTop: -20, // Overlap with header to create a rounded top edge
+    backgroundColor: "white",
   },
 });
