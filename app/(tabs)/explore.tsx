@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { IconSymbol } from "@/components/ui/IconSymbol";
 import { CategoryButtons } from "@/components/sections/category-buttons/category-buttons";
 import { BottomSheetProvider } from "@/components/bottom-sheet/bottom-sheet-provider";
-import { CustomBottomSheet } from "@/components/bottom-sheet/custom-bottom-sheet";
+import { BottomSheet } from "@/components/bottom-sheet/bottom-sheet";
 import { useBottomSheet } from "@/components/bottom-sheet/hooks/use-bottom-sheet";
 
 export default function ExploreScreen() {
@@ -30,14 +30,14 @@ export default function ExploreScreen() {
           style={styles.headerImage}
         />
 
-        <CustomBottomSheet
+        <BottomSheet
           initialIndex={1}
           snapPoints={["25%", "50%", "100%"]}
           onSheetChanges={handleSheetChanges}
           autoPresent={true}
         >
           <CategoryButtons />
-        </CustomBottomSheet>
+        </BottomSheet>
       </SafeAreaView>
     </BottomSheetProvider>
   );
@@ -51,8 +51,9 @@ const styles = StyleSheet.create({
   },
   headerImage: {
     color: "#808080",
-    bottom: -90,
+    bottom: "25%",
     left: -35,
     position: "absolute",
+    zIndex: 1,
   },
 });
