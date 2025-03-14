@@ -9,13 +9,21 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mikaelboutin.kiosqapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSLocationWhenInUseUsageDescription": "This app needs access to your location to show your position on the map and find nearby points of interest.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "This app needs access to your location to show your position on the map and find nearby points of interest, even when the app is in the background.",
+        "NSLocationAlwaysUsageDescription": "This app needs access to your location to show your position on the map and find nearby points of interest, even when the app is in the background."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mikaelboutin.kiosqapp"
     },
     "web": {
       "bundler": "metro",
@@ -27,9 +35,10 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-screen.png",
+          "image": "./assets/splash.png",
           "resizeMode": "cover",
-          "backgroundColor": "#1A7F65"
+          "backgroundColor": "#1A7F65",
+          "enableFullScreenImage_legacy": true
         }
       ],
       [
@@ -45,10 +54,25 @@
             "node_modules/@expo-google-fonts/inter/Inter_600SemiBold.ttf"
           ]
         }
+      ],
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoidG9vc2FsdHkiLCJhIjoiY204OThlYXN1MHFsNDJrcTE2dXJuMnMzMiJ9.f1y_4VwYGuhm_8krJXWLPg"
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "7e0c072a-56f8-4e03-ac6d-0fa5cd46d2ae"
+      }
     }
   }
 }
