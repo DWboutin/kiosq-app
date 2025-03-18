@@ -7,48 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F11A3AC2D9B437DB30F976A /* Nunito_600SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33F9DFB9534549498560423F /* Nunito_600SemiBold.ttf */; };
-		0F46D64F356CB165FF89C6AF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 021AC116DACF1110BD8033FF /* PrivacyInfo.xcprivacy */; };
+		117B3E23711E4684A8845AAE /* Nunito_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 035130E8B0B8428BB4C839F2 /* Nunito_400Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		25D4E353791341959E9751A9 /* Inter_600SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B8F9EBE7CA0499786075F84 /* Inter_600SemiBold.ttf */; };
+		2F22838E126F455BA06A7AAA /* Lato_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80441CE77E0942369CBEC48E /* Lato_400Regular.ttf */; };
+		39CD989D6AFB4F8A8A0BF887 /* Nunito_600SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70263E6354F641A690606656 /* Nunito_600SemiBold.ttf */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		5189059CF6884EC2AB9EEC32 /* Nunito_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD48981A61BD4D218026D1B5 /* Nunito_400Regular.ttf */; };
-		5383702EBD5E4C7B95B91005 /* Inter_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43ECACA02AC846E586553303 /* Inter_400Regular.ttf */; };
-		5969B46C6B244890B4B8823E /* Lato_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDF9DAB35B28433CB36CAF81 /* Lato_400Regular.ttf */; };
-		8F48855EF3044E70AF20E346 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81159DD23B3C48DCBF13E154 /* noop-file.swift */; };
+		53E23EC9A84646A5907221BF /* Lato_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 790F0C9726C94C5EAAB4391C /* Lato_700Bold.ttf */; };
+		763F171425F8AF28B2E66DAB /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 7B7B60CBD7C751C48158B4C5 /* PrivacyInfo.xcprivacy */; };
 		96905EF65AED1B983A6B3ABC /* libPods-kiosqapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-kiosqapp.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		D50470DEC4754B62BCC003F2 /* Nunito_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 150243CB6976410F8D1DCB81 /* Nunito_700Bold.ttf */; };
-		DF493C6F08EC4CD9A5611FB4 /* Lato_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32267C15E1E841E2A7D0AEB9 /* Lato_700Bold.ttf */; };
-		FE56F01F3861464CA215A2AB /* Inter_600SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E3372EA989F42339FBD0CF7 /* Inter_600SemiBold.ttf */; };
+		D3E31766889A4AED9CE18F04 /* Nunito_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5475AAC62304437A93397382 /* Nunito_700Bold.ttf */; };
+		D509566B9A5143BEB182934C /* Inter_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8DF5EF27D74A5BA2510C4E /* Inter_400Regular.ttf */; };
+		EA2ED6A9D7244BC78CE52269 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C82F32CDC4AEA880C5E22 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		021AC116DACF1110BD8033FF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = kiosqapp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		0AA4588B52864CFC82135A08 /* kiosqapp-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "kiosqapp-Bridging-Header.h"; path = "kiosqapp/kiosqapp-Bridging-Header.h"; sourceTree = "<group>"; };
+		035130E8B0B8428BB4C839F2 /* Nunito_400Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito_400Regular.ttf; path = "../node_modules/@expo-google-fonts/nunito/Nunito_400Regular.ttf"; sourceTree = "<group>"; };
+		0B8F9EBE7CA0499786075F84 /* Inter_600SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Inter_600SemiBold.ttf; path = "../node_modules/@expo-google-fonts/inter/Inter_600SemiBold.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* kiosqapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kiosqapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = kiosqapp/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = kiosqapp/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = kiosqapp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = kiosqapp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = kiosqapp/main.m; sourceTree = "<group>"; };
-		150243CB6976410F8D1DCB81 /* Nunito_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito_700Bold.ttf; path = "../node_modules/@expo-google-fonts/nunito/Nunito_700Bold.ttf"; sourceTree = "<group>"; };
-		32267C15E1E841E2A7D0AEB9 /* Lato_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Lato_700Bold.ttf; path = "../node_modules/@expo-google-fonts/lato/Lato_700Bold.ttf"; sourceTree = "<group>"; };
-		33F9DFB9534549498560423F /* Nunito_600SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito_600SemiBold.ttf; path = "../node_modules/@expo-google-fonts/nunito/Nunito_600SemiBold.ttf"; sourceTree = "<group>"; };
-		43ECACA02AC846E586553303 /* Inter_400Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Inter_400Regular.ttf; path = "../node_modules/@expo-google-fonts/inter/Inter_400Regular.ttf"; sourceTree = "<group>"; };
+		5475AAC62304437A93397382 /* Nunito_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito_700Bold.ttf; path = "../node_modules/@expo-google-fonts/nunito/Nunito_700Bold.ttf"; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-kiosqapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-kiosqapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C8DF5EF27D74A5BA2510C4E /* Inter_400Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Inter_400Regular.ttf; path = "../node_modules/@expo-google-fonts/inter/Inter_400Regular.ttf"; sourceTree = "<group>"; };
+		657DD1DB9FB04BAE91919525 /* kiosqapp-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "kiosqapp-Bridging-Header.h"; path = "kiosqapp/kiosqapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-kiosqapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiosqapp.debug.xcconfig"; path = "Target Support Files/Pods-kiosqapp/Pods-kiosqapp.debug.xcconfig"; sourceTree = "<group>"; };
+		70263E6354F641A690606656 /* Nunito_600SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito_600SemiBold.ttf; path = "../node_modules/@expo-google-fonts/nunito/Nunito_600SemiBold.ttf"; sourceTree = "<group>"; };
+		790F0C9726C94C5EAAB4391C /* Lato_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Lato_700Bold.ttf; path = "../node_modules/@expo-google-fonts/lato/Lato_700Bold.ttf"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-kiosqapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-kiosqapp.release.xcconfig"; path = "Target Support Files/Pods-kiosqapp/Pods-kiosqapp.release.xcconfig"; sourceTree = "<group>"; };
-		7E3372EA989F42339FBD0CF7 /* Inter_600SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Inter_600SemiBold.ttf; path = "../node_modules/@expo-google-fonts/inter/Inter_600SemiBold.ttf"; sourceTree = "<group>"; };
-		81159DD23B3C48DCBF13E154 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "kiosqapp/noop-file.swift"; sourceTree = "<group>"; };
+		7B7B60CBD7C751C48158B4C5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = kiosqapp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		80441CE77E0942369CBEC48E /* Lato_400Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Lato_400Regular.ttf; path = "../node_modules/@expo-google-fonts/lato/Lato_400Regular.ttf"; sourceTree = "<group>"; };
+		840C82F32CDC4AEA880C5E22 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "kiosqapp/noop-file.swift"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = kiosqapp/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		DDF9DAB35B28433CB36CAF81 /* Lato_400Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Lato_400Regular.ttf; path = "../node_modules/@expo-google-fonts/lato/Lato_400Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-kiosqapp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		FD48981A61BD4D218026D1B5 /* Nunito_400Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Nunito_400Regular.ttf; path = "../node_modules/@expo-google-fonts/nunito/Nunito_400Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +73,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				81159DD23B3C48DCBF13E154 /* noop-file.swift */,
-				0AA4588B52864CFC82135A08 /* kiosqapp-Bridging-Header.h */,
-				021AC116DACF1110BD8033FF /* PrivacyInfo.xcprivacy */,
+				840C82F32CDC4AEA880C5E22 /* noop-file.swift */,
+				657DD1DB9FB04BAE91919525 /* kiosqapp-Bridging-Header.h */,
+				7B7B60CBD7C751C48158B4C5 /* PrivacyInfo.xcprivacy */,
 			);
 			name = kiosqapp;
 			sourceTree = "<group>";
@@ -89,16 +89,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6DEFE5321F6646DDB3BED28A /* Resources */ = {
+		59202FC355744B54B4BA7436 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FD48981A61BD4D218026D1B5 /* Nunito_400Regular.ttf */,
-				33F9DFB9534549498560423F /* Nunito_600SemiBold.ttf */,
-				150243CB6976410F8D1DCB81 /* Nunito_700Bold.ttf */,
-				DDF9DAB35B28433CB36CAF81 /* Lato_400Regular.ttf */,
-				32267C15E1E841E2A7D0AEB9 /* Lato_700Bold.ttf */,
-				43ECACA02AC846E586553303 /* Inter_400Regular.ttf */,
-				7E3372EA989F42339FBD0CF7 /* Inter_600SemiBold.ttf */,
+				035130E8B0B8428BB4C839F2 /* Nunito_400Regular.ttf */,
+				70263E6354F641A690606656 /* Nunito_600SemiBold.ttf */,
+				5475AAC62304437A93397382 /* Nunito_700Bold.ttf */,
+				80441CE77E0942369CBEC48E /* Lato_400Regular.ttf */,
+				790F0C9726C94C5EAAB4391C /* Lato_700Bold.ttf */,
+				5C8DF5EF27D74A5BA2510C4E /* Inter_400Regular.ttf */,
+				0B8F9EBE7CA0499786075F84 /* Inter_600SemiBold.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -120,7 +120,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				6DEFE5321F6646DDB3BED28A /* Resources */,
+				59202FC355744B54B4BA7436 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -177,13 +177,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "kiosqapp" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				D3AD8AA277B2E2D1AA4649A5 /* [Expo] Configure project */,
+				287903FD33E7B03047D5464D /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				D2412E337E92F10E5DA97D0C /* [CP] Embed Pods Frameworks */,
+				D59283915EEAED6E16A8FDA5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -233,14 +233,14 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				5189059CF6884EC2AB9EEC32 /* Nunito_400Regular.ttf in Resources */,
-				0F11A3AC2D9B437DB30F976A /* Nunito_600SemiBold.ttf in Resources */,
-				D50470DEC4754B62BCC003F2 /* Nunito_700Bold.ttf in Resources */,
-				5969B46C6B244890B4B8823E /* Lato_400Regular.ttf in Resources */,
-				DF493C6F08EC4CD9A5611FB4 /* Lato_700Bold.ttf in Resources */,
-				5383702EBD5E4C7B95B91005 /* Inter_400Regular.ttf in Resources */,
-				FE56F01F3861464CA215A2AB /* Inter_600SemiBold.ttf in Resources */,
-				0F46D64F356CB165FF89C6AF /* PrivacyInfo.xcprivacy in Resources */,
+				117B3E23711E4684A8845AAE /* Nunito_400Regular.ttf in Resources */,
+				39CD989D6AFB4F8A8A0BF887 /* Nunito_600SemiBold.ttf in Resources */,
+				D3E31766889A4AED9CE18F04 /* Nunito_700Bold.ttf in Resources */,
+				2F22838E126F455BA06A7AAA /* Lato_400Regular.ttf in Resources */,
+				53E23EC9A84646A5907221BF /* Lato_700Bold.ttf in Resources */,
+				D509566B9A5143BEB182934C /* Inter_400Regular.ttf in Resources */,
+				25D4E353791341959E9751A9 /* Inter_600SemiBold.ttf in Resources */,
+				763F171425F8AF28B2E66DAB /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +284,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		287903FD33E7B03047D5464D /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-kiosqapp/expo-configure-project.sh\"\n";
+		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -324,7 +343,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kiosqapp/Pods-kiosqapp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D2412E337E92F10E5DA97D0C /* [CP] Embed Pods Frameworks */ = {
+		D59283915EEAED6E16A8FDA5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -352,25 +371,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-kiosqapp/Pods-kiosqapp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3AD8AA277B2E2D1AA4649A5 /* [Expo] Configure project */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-kiosqapp/expo-configure-project.sh\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -381,7 +381,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				8F48855EF3044E70AF20E346 /* noop-file.swift in Sources */,
+				EA2ED6A9D7244BC78CE52269 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,7 +412,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikaelboutin.kiosqapp;
-				PRODUCT_NAME = "kiosqapp";
+				PRODUCT_NAME = kiosqapp;
 				SWIFT_OBJC_BRIDGING_HEADER = "kiosqapp/kiosqapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -440,7 +440,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikaelboutin.kiosqapp;
-				PRODUCT_NAME = "kiosqapp";
+				PRODUCT_NAME = kiosqapp;
 				SWIFT_OBJC_BRIDGING_HEADER = "kiosqapp/kiosqapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

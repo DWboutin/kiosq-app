@@ -1,14 +1,17 @@
 import "expo-dev-client";
 
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useCallback } from "react";
 import { CategoryButtons } from "@/components/sections/category-buttons/category-buttons";
 import { BottomSheetProvider } from "@/components/bottom-sheet/bottom-sheet-provider";
 import { BottomSheet } from "@/components/bottom-sheet/bottom-sheet";
 import { useBottomSheet } from "@/components/bottom-sheet/hooks/use-bottom-sheet";
 import { MapView } from "@/features/mapview/mapview";
+import { Search } from "@/features/search/search";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function ExploreScreen() {
+  const insets = useSafeAreaInsets();
   // Use our custom hook to manage the bottom sheet
   const { ref: bottomSheetRef, present: presentBottomSheet } = useBottomSheet();
 
@@ -24,11 +27,15 @@ export default function ExploreScreen() {
 
   return (
     <BottomSheetProvider>
-      <MapView />
+      <View style={styles.container}>
+        <Search />
+
+        <MapView />
+      </View>
 
       <BottomSheet
         initialIndex={1}
-        snapPoints={["25%", "50%", "100%"]}
+        snapPoints={["25%", "47%", "100%"]}
         onSheetChanges={handleSheetChanges}
         autoPresent={true}
       >
@@ -41,8 +48,6 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: "relative",
-    backgroundColor: "#f0f0f0",
   },
   headerImage: {
     color: "#808080",
@@ -50,5 +55,8 @@ const styles = StyleSheet.create({
     left: -35,
     position: "absolute",
     zIndex: 1,
+  },
+  contentContainer: {
+    flex: 1,
   },
 });
