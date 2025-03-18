@@ -1,18 +1,12 @@
 import "expo-dev-client";
 
-import { StyleSheet, View, Text, Pressable, SafeAreaView } from "react-native";
+import { StyleSheet } from "react-native";
 import { useCallback } from "react";
-import { IconSymbol } from "@/components/ui/IconSymbol";
 import { CategoryButtons } from "@/components/sections/category-buttons/category-buttons";
 import { BottomSheetProvider } from "@/components/bottom-sheet/bottom-sheet-provider";
 import { BottomSheet } from "@/components/bottom-sheet/bottom-sheet";
 import { useBottomSheet } from "@/components/bottom-sheet/hooks/use-bottom-sheet";
-
-import Mapbox from "@rnmapbox/maps";
-
-Mapbox.setAccessToken(
-  "pk.eyJ1IjoidG9vc2FsdHkiLCJhIjoiY204OTZlYmdvMHpodDJyb21md2Y3dW5hcyJ9.dGMXtSJp5OpLhyWzPpG0IA"
-);
+import { MapView } from "@/features/mapview/mapview";
 
 export default function ExploreScreen() {
   // Use our custom hook to manage the bottom sheet
@@ -30,9 +24,7 @@ export default function ExploreScreen() {
 
   return (
     <BottomSheetProvider>
-      <View style={styles.mapContainer}>
-        <Mapbox.MapView style={styles.map} />
-      </View>
+      <MapView />
 
       <BottomSheet
         initialIndex={1}
@@ -58,11 +50,5 @@ const styles = StyleSheet.create({
     left: -35,
     position: "absolute",
     zIndex: 1,
-  },
-  mapContainer: {
-    flex: 1,
-  },
-  map: {
-    flex: 1,
   },
 });

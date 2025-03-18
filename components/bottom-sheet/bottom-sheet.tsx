@@ -74,7 +74,7 @@ export const BottomSheet = ({
     (props: any) => (
       <BottomSheetBackdrop
         {...props}
-        disappearsOnIndex={0}
+        disappearsOnIndex={1}
         appearsOnIndex={1}
         enableTouchThrough={true}
         pressBehavior="collapse"
