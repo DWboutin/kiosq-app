@@ -40,7 +40,7 @@ export default function ExploreScreen() {
         onSheetChanges={handleSheetChanges}
         autoPresent={true}
       >
-        {/* <CategoryButtons /> */}
+        <CategoryButtons />
         <SearchResultsProducts />
       </BottomSheet>
     </BottomSheetProvider>

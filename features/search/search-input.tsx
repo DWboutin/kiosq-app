@@ -5,7 +5,9 @@ import { theme } from "@/components/atoms/theme/theme";
 export const SearchInput = () => {
   return (
     <View style={styles.searchContainer}>
-      <SearchIcon color="#666" />
+      <View style={styles.searchIconContainer}>
+        <SearchIcon color="#666" />
+      </View>
       <TextInput style={styles.searchInput} placeholder="Search..." placeholderTextColor="#666" />
     </View>
   );
@@ -31,6 +33,10 @@ const styles = StyleSheet.create({
     elevation: 2,
     borderRadius: 26,
     width: "100%",
+  },
+  searchIconContainer: {
+    width: 24,
+    height: 24,
   },
   searchInput: {
     flex: 1,

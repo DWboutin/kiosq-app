@@ -1,5 +1,5 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
-import { Stack } from "expo-router";
+import { Stack, router } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
@@ -16,6 +16,8 @@ export default function RootLayout() {
     setTimeout(() => {
       SplashScreen.hideAsync();
     }, 1000);
+
+    // router.replace("/explore/products/1"); // redirect for faster development
   }, []);
 
   return (

@@ -1,4 +1,5 @@
 import { LocationPinIcon } from "@/components/atoms/icons/location-pin-icon/location-pin-icon";
+import { PressableCard } from "@/components/atoms/pressable-card/pressable-card";
 import { theme } from "@/components/atoms/theme/theme";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
@@ -26,7 +27,7 @@ export const SearchProductButton = ({
   vendorImage,
 }: SearchProductButtonProps) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <PressableCard onPress={onPress}>
       <Image source={productImage} style={styles.productImage} resizeMode="cover" />
       <View style={styles.contentContainer}>
         <View style={styles.avatarContainer}>
@@ -49,25 +50,11 @@ export const SearchProductButton = ({
           <Text style={styles.distance}>{distance}</Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </PressableCard>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
-    // width: 155,
-    height: 220,
-    borderRadius: 12,
-    backgroundColor: "white",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
   productImage: {
     width: "100%",
     height: 100,
