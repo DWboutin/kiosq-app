@@ -20,7 +20,15 @@ export const CategoryButton = ({
   const Icon = icon;
 
   return (
-    <TouchableOpacity style={[styles.button, { backgroundColor }]} onPress={onPress}>
+    <TouchableOpacity
+      style={[
+        styles.button,
+        {
+          backgroundColor,
+        },
+      ]}
+      onPress={onPress}
+    >
       <View style={styles.iconContainer}>
         <Icon color={contentColor} />
       </View>
@@ -31,8 +39,7 @@ export const CategoryButton = ({
 
 const styles = StyleSheet.create({
   button: {
-    width: 100,
-    height: 100,
+    flex: 1,
     borderRadius: 16,
     justifyContent: "center",
     alignItems: "center",

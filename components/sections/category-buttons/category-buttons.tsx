@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { productCategories } from "@/utils/product-categories";
 import { CategoryButton } from "@/components/molecules/category-button/category-button";
 import { SectionTitle } from "@/components/atoms/typography/section-title";
@@ -11,13 +11,14 @@ export const CategoryButtons = () => {
       </View>
       <View style={styles.gridContainer}>
         {productCategories.map((category) => (
-          <CategoryButton
-            key={category.name}
-            backgroundColor={category.backgroundColor}
-            contentColor={category.contentColor}
-            icon={category.icon}
-            text={category.text}
-          />
+          <View key={category.name} style={styles.buttonWrapper}>
+            <CategoryButton
+              backgroundColor={category.backgroundColor}
+              contentColor={category.contentColor}
+              icon={category.icon}
+              text={category.text}
+            />
+          </View>
         ))}
       </View>
     </View>
@@ -34,7 +35,12 @@ const styles = StyleSheet.create({
   gridContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
     gap: 16,
+  },
+  buttonWrapper: {
+    flexBasis: "30%",
+    flexGrow: 1,
+    aspectRatio: 1,
+    maxWidth: "30%",
   },
 });

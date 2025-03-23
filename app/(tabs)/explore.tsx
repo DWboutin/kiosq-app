@@ -36,11 +36,11 @@ export default function ExploreScreen() {
 
       <BottomSheet
         initialIndex={1}
-        snapPoints={["25%", "47%", "100%"]}
+        snapPoints={["25%", "48%", "100%"]}
         onSheetChanges={handleSheetChanges}
         autoPresent={true}
       >
-        <SearchResultsProducts />
+        <CategoryButtons />
       </BottomSheet>
     </BottomSheetProvider>
   );
