@@ -27,7 +27,7 @@ export const SearchResultsProducts = () => {
                   <SearchProductButton
                     onPress={() => {
                       router.navigate({
-                        pathname: "/products/[id]",
+                        pathname: "/explore/products/[id]",
                         params: { id: index.toString() },
                       });
                     }}
