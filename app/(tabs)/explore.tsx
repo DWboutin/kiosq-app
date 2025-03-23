@@ -9,6 +9,7 @@ import { useBottomSheet } from "@/components/ui/bottom-sheet/hooks/use-bottom-sh
 import { MapView } from "@/features/mapview/mapview";
 import { Search } from "@/features/search/search";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { SearchProductButton } from "@/components/molecules/search-product-button/search-product-button";
 
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
@@ -39,7 +40,29 @@ export default function ExploreScreen() {
         onSheetChanges={handleSheetChanges}
         autoPresent={true}
       >
-        <CategoryButtons />
+        <View style={styles.contentContainer}>
+          <SearchProductButton
+            productName="Pommes du verger fraîches qui goûte bon dans yeule"
+            price={1.5}
+            unit="kg"
+            quantity="10"
+            vendorName="Fruitier"
+            distance="10 km"
+            productImage={{ uri: "https://picsum.photos/195/155" }}
+            vendorImage={{ uri: "https://picsum.photos/32/32" }}
+          />
+          <SearchProductButton
+            productName="Pommes"
+            price={1.5}
+            unit="kg"
+            quantity="10"
+            vendorName="Fruitier"
+            distance="10 km"
+            productImage={{ uri: "https://picsum.photos/195/155" }}
+            vendorImage={{ uri: "https://picsum.photos/32/32" }}
+          />
+        </View>
+        {/* <CategoryButtons /> */}
       </BottomSheet>
     </BottomSheetProvider>
   );
@@ -58,5 +81,7 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+    gap: 12,
+    flexDirection: "row",
   },
 });
