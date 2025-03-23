@@ -1,6 +1,6 @@
 import "expo-dev-client";
 
-import { ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useCallback } from "react";
 import { CategoryButtons } from "@/components/sections/category-buttons/category-buttons";
 import { BottomSheetProvider } from "@/components/ui/bottom-sheet/bottom-sheet-provider";
@@ -9,13 +9,12 @@ import { useBottomSheet } from "@/components/ui/bottom-sheet/hooks/use-bottom-sh
 import { MapView } from "@/features/mapview/mapview";
 import { Search } from "@/features/search/search";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { SearchProductButton } from "@/components/molecules/search-product-button/search-product-button";
 import { SearchResultsProducts } from "@/components/sections/search-results-products/search-results-products";
 
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
   // Use our custom hook to manage the bottom sheet
-  const { ref: bottomSheetRef, present: presentBottomSheet } = useBottomSheet();
+  const { present: presentBottomSheet } = useBottomSheet();
 
   // Log sheet changes
   const handleSheetChanges = useCallback((index: number) => {
@@ -41,10 +40,7 @@ export default function ExploreScreen() {
         onSheetChanges={handleSheetChanges}
         autoPresent={true}
       >
-        <ScrollView>
-          <SearchResultsProducts />
-        </ScrollView>
-        {/* <CategoryButtons /> */}
+        <SearchResultsProducts />
       </BottomSheet>
     </BottomSheetProvider>
   );

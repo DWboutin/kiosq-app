@@ -1,6 +1,20 @@
 import React, { useCallback, useRef, useMemo, useEffect, ReactNode, useState } from "react";
-import { StyleSheet, SafeAreaView, View, Dimensions, Modal, Animated } from "react-native";
-import { BottomSheetModal, BottomSheetBackdrop, BottomSheetView } from "@gorhom/bottom-sheet";
+import {
+  StyleSheet,
+  SafeAreaView,
+  View,
+  Dimensions,
+  Modal,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+  Animated,
+} from "react-native";
+import {
+  BottomSheetModal,
+  BottomSheetBackdrop,
+  BottomSheetView,
+  BottomSheetScrollView,
+} from "@gorhom/bottom-sheet";
 import { theme } from "@/components/atoms/theme/theme";
 
 interface CustomBottomSheetProps {
@@ -22,7 +36,17 @@ export const BottomSheet = ({
 }: CustomBottomSheetProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
-  const paddingAnimation = useRef(new Animated.Value(0)).current;
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const previousScrollY = useRef(0);
+
+  // Create the animated value as a ref to avoid recreation
+  const animatedPosition = useRef(new Animated.Value(0)).current;
+  // Pre-configure the interpolation to avoid runtime errors
+  const paddingTop = animatedPosition.interpolate({
+    inputRange: [0, 1, 2],
+    outputRange: [0, 0, 100],
+    extrapolate: "clamp",
+  });
 
   const snapPoints = useMemo(() => {
     return customSnapPoints || ["25%", "47%", "100%"];
@@ -32,19 +56,28 @@ export const BottomSheet = ({
     return initialIndex;
   }, [initialIndex]);
 
+  // When index changes, record the new index
   const handleSheetChanges = (index: number) => {
+    setCurrentIndex(index);
+
     if (onSheetChanges) {
       onSheetChanges(index);
     }
   };
 
-  const handleAnimate = (fromIndex: number, toIndex: number) => {
-    Animated.timing(paddingAnimation, {
-      toValue: toIndex === snapPoints.length ? 100 : 0,
-      duration: 200,
-      useNativeDriver: false,
-    }).start();
-  };
+  // This function handles the actual animation during movement
+  const handleSheetAnimate = useCallback(
+    (fromIndex: number, toIndex: number) => {
+      // Use Animated.spring for smoother, more natural animation
+      Animated.spring(animatedPosition, {
+        toValue: toIndex,
+        tension: 40,
+        friction: 10,
+        useNativeDriver: false,
+      }).start();
+    },
+    [animatedPosition]
+  );
 
   useEffect(() => {
     if (autoPresent) {
@@ -64,6 +97,28 @@ export const BottomSheet = ({
     const fullHeightIndex = snapPoints.length - 1;
     bottomSheetModalRef.current?.snapToIndex(fullHeightIndex);
   }, [snapPoints]);
+
+  // Custom handler to detect pull to collapse
+  const handleScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const currentScrollY = event.nativeEvent.contentOffset.y;
+
+      // Check if we're at the top of the scroll
+      if (currentScrollY <= 0) {
+        if (
+          currentIndex === snapPoints.length - 1 &&
+          previousScrollY.current > currentScrollY &&
+          currentScrollY === 0
+        ) {
+          console.log("Detected pull-to-collapse at top");
+          bottomSheetModalRef.current?.snapToIndex(1);
+        }
+      }
+
+      previousScrollY.current = currentScrollY;
+    },
+    [currentIndex, snapPoints.length]
+  );
 
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -88,6 +143,28 @@ export const BottomSheet = ({
     );
   }, []);
 
+  // Determine if fully open
+  const isFullyOpen = currentIndex === snapPoints.length - 1;
+
+  // Wrap content in BottomSheetScrollView which is optimized for bottom sheet
+  const wrappedChildren = useMemo(() => {
+    // Only enable scrolling when fully opened
+    const isScrollEnabled = isFullyOpen;
+
+    return (
+      <BottomSheetScrollView
+        scrollEnabled={isScrollEnabled}
+        onScroll={handleScroll}
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContainerBase}
+        showsVerticalScrollIndicator={true}
+        bounces={true}
+      >
+        <Animated.View style={{ paddingTop, paddingBottom: 100 }}>{children}</Animated.View>
+      </BottomSheetScrollView>
+    );
+  }, [children, isFullyOpen, handleScroll, paddingTop]);
+
   if (fullHeight) {
     return (
       <Modal
@@ -97,7 +174,7 @@ export const BottomSheet = ({
         onRequestClose={() => {}}
       >
         <SafeAreaView style={styles.fullHeightContainer}>
-          <View style={styles.fullHeightContent}>{children}</View>
+          <View style={styles.fullHeightContent}>{wrappedChildren}</View>
         </SafeAreaView>
       </Modal>
     );
@@ -109,7 +186,7 @@ export const BottomSheet = ({
       index={effectiveInitialIndex}
       snapPoints={snapPoints}
       onChange={handleSheetChanges}
-      onAnimate={handleAnimate}
+      onAnimate={handleSheetAnimate}
       backgroundStyle={{
         backgroundColor: theme.colors.neutral.white,
         borderTopLeftRadius: 16,
@@ -127,17 +204,7 @@ export const BottomSheet = ({
       keyboardBlurBehavior="restore"
       overDragResistanceFactor={3}
     >
-      <BottomSheetView style={styles.contentContainer}>
-        <Animated.View
-          style={{
-            flex: 1,
-            paddingTop: paddingAnimation,
-            paddingBottom: 16,
-          }}
-        >
-          {children}
-        </Animated.View>
-      </BottomSheetView>
+      {wrappedChildren}
     </BottomSheetModal>
   );
 };
@@ -167,5 +234,11 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContainerBase: {
+    minHeight: "100%",
   },
 });
