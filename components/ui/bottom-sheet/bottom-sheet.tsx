@@ -1,11 +1,6 @@
 import React, { useCallback, useRef, useMemo, useEffect, ReactNode, useState } from "react";
 import { StyleSheet, SafeAreaView, View, Dimensions, Modal, Animated } from "react-native";
-import {
-  BottomSheetModal,
-  BottomSheetScrollView,
-  BottomSheetBackdrop,
-  BottomSheetView,
-} from "@gorhom/bottom-sheet";
+import { BottomSheetModal, BottomSheetBackdrop, BottomSheetView } from "@gorhom/bottom-sheet";
 import { theme } from "@/components/atoms/theme/theme";
 
 interface CustomBottomSheetProps {
@@ -30,7 +25,7 @@ export const BottomSheet = ({
   const paddingAnimation = useRef(new Animated.Value(0)).current;
 
   const snapPoints = useMemo(() => {
-    return customSnapPoints || ["25%", "50%", "100%"];
+    return customSnapPoints || ["25%", "47%", "100%"];
   }, [customSnapPoints]);
 
   const effectiveInitialIndex = useMemo(() => {
@@ -45,7 +40,7 @@ export const BottomSheet = ({
 
   const handleAnimate = (fromIndex: number, toIndex: number) => {
     Animated.timing(paddingAnimation, {
-      toValue: toIndex === snapPoints.length ? 24 : 0,
+      toValue: toIndex === snapPoints.length ? 100 : 0,
       duration: 200,
       useNativeDriver: false,
     }).start();
@@ -77,6 +72,7 @@ export const BottomSheet = ({
         disappearsOnIndex={1}
         appearsOnIndex={1}
         enableTouchThrough={true}
+        enableDynamicSizing={false}
         pressBehavior="collapse"
         onPress={handleBackdropPress}
       />
