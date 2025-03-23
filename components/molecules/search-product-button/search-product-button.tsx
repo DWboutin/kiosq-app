@@ -55,7 +55,7 @@ export const SearchProductButton = ({
 
 const styles = StyleSheet.create({
   button: {
-    width: 155,
+    // width: 155,
     height: 220,
     borderRadius: 12,
     backgroundColor: "white",
