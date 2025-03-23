@@ -3,7 +3,7 @@ import { theme } from "@/components/atoms/theme/theme";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 interface SearchProductButtonProps {
-  onPress?: () => void;
+  onPress: () => void;
   productName: string;
   price: number;
   unit: string;

@@ -1,3 +1,4 @@
+import { TopLinearGradient } from "@/components/atoms/top-linear-gradient/top-linear-gradient";
 import { getLocation } from "@/utils/get-location";
 import Mapbox from "@rnmapbox/maps";
 import { LinearGradient } from "expo-linear-gradient";
@@ -26,7 +27,7 @@ export const MapView = () => {
 
   return (
     <View style={styles.container}>
-      <LinearGradient colors={["rgba(0,0,0,0.5)", "rgba(0,0,0,0)"]} style={styles.gradient} />
+      <TopLinearGradient />
       <Mapbox.MapView
         style={styles.map}
         compassEnabled={false}
@@ -51,13 +52,5 @@ const styles = StyleSheet.create({
   },
   map: {
     flex: 1,
-  },
-  gradient: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: 80,
-    zIndex: 2,
   },
 });

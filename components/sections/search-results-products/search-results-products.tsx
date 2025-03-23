@@ -1,6 +1,7 @@
 import { View, StyleSheet, Text, Dimensions } from "react-native";
 import { SectionTitle } from "@/components/atoms/typography/section-title";
 import { SearchProductButton } from "@/components/molecules/search-product-button/search-product-button";
+import { router } from "expo-router";
 
 export const SearchResultsProducts = () => {
   // Group items into pairs for 2 items per row
@@ -24,6 +25,12 @@ export const SearchResultsProducts = () => {
               return (
                 <View key={index} style={styles.buttonWrapper}>
                   <SearchProductButton
+                    onPress={() => {
+                      router.navigate({
+                        pathname: "/products/[id]",
+                        params: { id: index.toString() },
+                      });
+                    }}
                     productName="Pommes"
                     price={1.5}
                     unit="kg"

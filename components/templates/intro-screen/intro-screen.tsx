@@ -5,7 +5,7 @@ import {
   IntroScreenInfoProps,
 } from "@/components/templates/intro-screen/intro-screen-info";
 import { FC } from "react";
-import { LinearGradient } from "expo-linear-gradient";
+import { TopLinearGradient } from "@/components/atoms/top-linear-gradient/top-linear-gradient";
 
 type IntroScreenProps = {
   imageSrc: ImageSourcePropType;
@@ -15,7 +15,7 @@ export const IntroScreen: FC<IntroScreenProps> = ({ title, subtitle, button, ste
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <LinearGradient colors={["rgba(0,0,0,0.5)", "rgba(0,0,0,0)"]} style={styles.gradient} />
+        <TopLinearGradient />
         <Image source={imageSrc} style={styles.headerImage} resizeMode="cover" />
       </View>
       <View style={styles.infoContainer}>
@@ -43,14 +43,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     zIndex: 1,
-  },
-  gradient: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 0,
-    height: 80,
-    zIndex: 2,
   },
   textContainer: {
     padding: 16,
