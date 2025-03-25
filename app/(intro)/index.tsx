@@ -7,7 +7,13 @@ export default function HomeScreen() {
     <IntroScreen
       title="Bienvenue dans kiosq"
       subtitle="Explorez, réservez et soutenez les commerces locaux en toute simplicité."
-      button={<Button label="Commencer" onPress={() => router.push("/localisation")} />}
+      button={
+        <Button
+          label="Commencer"
+          onPress={() => router.push("/localisation")}
+          style={{ width: "100%" }}
+        />
+      }
       imageSrc={require("@/assets/images/town-image.png")}
       step={1}
     />

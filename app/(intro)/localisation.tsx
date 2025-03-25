@@ -36,7 +36,7 @@ export default function LocalisationScreen() {
       <IntroScreen
         title="Partagez la localisation"
         subtitle="Explorez, réservez et soutenez les commerces locaux en toute simplicité."
-        button={<Button label="Suivant" onPress={askForLocation} />}
+        button={<Button label="Suivant" onPress={askForLocation} style={{ width: "100%" }} />}
         imageSrc={require("@/assets/images/localisation-image.png")}
         step={2}
       />

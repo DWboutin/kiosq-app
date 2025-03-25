@@ -14,6 +14,7 @@ import { theme } from "@/components/atoms/theme/theme";
 import { ProductHeader } from "@/components/templates/product-header/product-header";
 import { MapView } from "@/features/mapview/mapview";
 import { VendorMapPopup } from "@/components/templates/vendor-map-popup/vendor-map-popup";
+import { RelatedProducts } from "@/components/templates/related-products/related-products";
 
 export default function ProductScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -29,8 +30,8 @@ export default function ProductScreen() {
       </View>
       <ScrollView
         style={styles.scrollContainer}
-        bounces={false}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scrollContentContainer}
       >
         <View style={styles.scrollContent}>
           <View style={styles.content}>
@@ -45,6 +46,7 @@ export default function ProductScreen() {
                 />
               </View>
             </View>
+            <RelatedProducts />
           </View>
         </View>
       </ScrollView>
@@ -72,8 +74,12 @@ const styles = StyleSheet.create({
     flex: 1,
     zIndex: 1,
   },
+  scrollContentContainer: {
+    flexGrow: 1,
+  },
   scrollContent: {
     paddingTop: 220, // Slightly less than image height to create overlap
+    flexGrow: 1,
   },
   content: {
     flex: 1,

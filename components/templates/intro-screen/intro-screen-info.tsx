@@ -2,6 +2,7 @@ import { Button } from "@/components/atoms/button/button";
 import { theme } from "@/components/atoms/theme/theme";
 import { router } from "expo-router";
 import { View, Text, StyleSheet } from "react-native";
+import React from "react";
 
 export type IntroScreenInfoProps = {
   title: string;
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 20,
     alignItems: "center",
+    width: "100%",
   },
   title: {
     fontSize: 24,
@@ -64,7 +66,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary.medium,
   },
   buttonContainer: {
-    display: "flex",
-    flexDirection: "row",
+    width: "100%",
   },
 });

@@ -74,15 +74,14 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     width: "auto",
+    gap: 4,
   },
   labelText: {
     flex: 0,
     textAlign: "left",
-    marginRight: 0,
   },
   arrowContainer: {
     width: 12,
     height: 12,
-    marginLeft: 4,
   },
 });

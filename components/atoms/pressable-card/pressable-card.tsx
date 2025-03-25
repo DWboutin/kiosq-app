@@ -15,7 +15,6 @@ export const PressableCard = ({ onPress, children }: PressableCardProps) => {
 
 const styles = StyleSheet.create({
   card: {
-    height: 220,
     borderRadius: 12,
     backgroundColor: "white",
     shadowColor: "#000",

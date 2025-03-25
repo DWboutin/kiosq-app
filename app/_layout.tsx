@@ -17,7 +17,7 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
     }, 1000);
 
-    router.replace("/explore/products/1"); // redirect for faster development
+    // router.replace("/explore/products/1"); // redirect for faster development
   }, []);
 
   return (
