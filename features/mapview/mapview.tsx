@@ -1,8 +1,6 @@
 import { TopLinearGradient } from "@/components/atoms/top-linear-gradient/top-linear-gradient";
 import { getLocation } from "@/utils/get-location";
 import Mapbox from "@rnmapbox/maps";
-import { LinearGradient } from "expo-linear-gradient";
-import { LocationObject } from "expo-location";
 import { useEffect, useState } from "react";
 import { View, StyleSheet } from "react-native";
 
@@ -27,7 +25,6 @@ export const MapView = () => {
 
   return (
     <View style={styles.container}>
-      <TopLinearGradient />
       <Mapbox.MapView
         style={styles.map}
         compassEnabled={false}

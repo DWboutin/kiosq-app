@@ -12,6 +12,8 @@ import {
 import { useLocalSearchParams } from "expo-router";
 import { theme } from "@/components/atoms/theme/theme";
 import { ProductHeader } from "@/components/templates/product-header/product-header";
+import { MapView } from "@/features/mapview/mapview";
+import { VendorMapPopup } from "@/components/templates/vendor-map-popup/vendor-map-popup";
 
 export default function ProductScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -33,6 +35,16 @@ export default function ProductScreen() {
         <View style={styles.scrollContent}>
           <View style={styles.content}>
             <ProductHeader />
+            <View style={styles.mapViewContainer}>
+              <MapView />
+              <View style={styles.vendorPopupContainer}>
+                <VendorMapPopup
+                  title="Producteur local"
+                  vendorName="Ferme Jean-Pierre Plante"
+                  onPress={() => console.log("Voir la page")}
+                />
+              </View>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -40,18 +52,7 @@ export default function ProductScreen() {
   );
 }
 
-type Styles = {
-  container: ViewStyle;
-  imageContainer: ViewStyle;
-  image: ImageStyle;
-  scrollContainer: ViewStyle;
-  scrollContent: ViewStyle;
-  content: ViewStyle;
-  title: TextStyle;
-  subtitle: TextStyle;
-};
-
-const styles = StyleSheet.create<Styles>({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
@@ -73,13 +74,10 @@ const styles = StyleSheet.create<Styles>({
   },
   scrollContent: {
     paddingTop: 220, // Slightly less than image height to create overlap
-    minHeight: 4000, // Using a number instead of a string with "px"
   },
   content: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 30,
-    paddingBottom: 100, // Make room for back button
+    paddingBottom: 100,
     backgroundColor: theme.colors.neutral.white,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -92,5 +90,19 @@ const styles = StyleSheet.create<Styles>({
   subtitle: {
     fontSize: 16,
     color: "#666",
+  },
+  mapViewContainer: {
+    position: "relative",
+    height: 220,
+  },
+  vendorPopupContainer: {
+    position: "absolute",
+    bottom: 36,
+    left: 0,
+    right: 0,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    zIndex: 1,
   },
 });
