@@ -66,6 +66,7 @@ export type Theme = {
       };
       Inter: {
         Regular: string;
+        Medium: string;
         Semibold: string;
       };
     };
@@ -146,6 +147,7 @@ export const theme: Theme = {
       },
       Inter: {
         Regular: "Inter_400Regular",
+        Medium: "Inter_500Medium",
         Semibold: "Inter_600SemiBold",
       },
     },

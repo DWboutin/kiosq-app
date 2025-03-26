@@ -51,6 +51,7 @@
             "node_modules/@expo-google-fonts/lato/Lato_400Regular.ttf",
             "node_modules/@expo-google-fonts/lato/Lato_700Bold.ttf",
             "node_modules/@expo-google-fonts/inter/Inter_400Regular.ttf",
+            "node_modules/@expo-google-fonts/inter/Inter_500Medium.ttf",
             "node_modules/@expo-google-fonts/inter/Inter_600SemiBold.ttf"
           ]
         }
