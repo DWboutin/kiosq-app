@@ -1,10 +1,8 @@
 import { Text, SafeAreaView, StyleSheet, View, TouchableOpacity } from "react-native";
-import { FormTextInput } from "@/components/atoms/form-text-input/form-text-input";
 import { theme } from "@/components/atoms/theme/theme";
 import { useRouter } from "expo-router";
 import { ArrowIcon } from "@/components/atoms/icons/arrow-icon/arrow-icon";
-import { FormInputContainer } from "@/components/atoms/form-input-container/form-input-container";
-import { Button } from "@/components/atoms/button/button";
+import { EmailSignupForm } from "@/features/email-signup-form/email-signup-form";
 
 export default function EmailSignup() {
   const router = useRouter();
@@ -27,17 +25,7 @@ export default function EmailSignup() {
           </Text>
         </View>
         <View style={styles.formContainer}>
-          <View style={styles.formContainer}>
-            <FormInputContainer label="Nom complet">
-              <FormTextInput placeholder="John Doe" />
-            </FormInputContainer>
-            <FormInputContainer label="Courriel">
-              <FormTextInput placeholder="john.doe@example.com" />
-            </FormInputContainer>
-            <View style={styles.buttonContainer}>
-              <Button label="Continuer" onPress={() => {}} />
-            </View>
-          </View>
+          <EmailSignupForm />
           <View>
             <Text style={styles.termsText}>
               En créant mon compte, j'accepte les{" "}
@@ -121,10 +109,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     gap: 20,
-  },
-  buttonContainer: {
-    display: "flex",
-    flexDirection: "column",
   },
   termsText: {
     fontSize: 14,

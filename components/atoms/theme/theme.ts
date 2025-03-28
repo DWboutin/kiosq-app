@@ -14,6 +14,9 @@ export type Theme = {
       medium: string;
       dark: string;
     };
+    secondary: {
+      danger: string;
+    };
     categories: {
       preparedMeals: {
         backgroundColor: string;
@@ -94,6 +97,9 @@ export const theme: Theme = {
       light: "#80D488",
       medium: "#1A7F65",
       dark: "#086049",
+    },
+    secondary: {
+      danger: "#F41F1F",
     },
     categories: {
       preparedMeals: {

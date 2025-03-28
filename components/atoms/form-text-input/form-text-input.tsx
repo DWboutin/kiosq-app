@@ -1,8 +1,12 @@
 import { theme } from "@/components/atoms/theme/theme";
 import { TextInput as RNTextInput, TextInputProps, StyleSheet } from "react-native";
 
-export const FormTextInput = (props: TextInputProps) => {
-  return <RNTextInput {...props} style={styles.input} />;
+type FormTextInputProps = TextInputProps & {
+  hasError?: string;
+};
+
+export const FormTextInput = ({ hasError, ...props }: FormTextInputProps) => {
+  return <RNTextInput {...props} style={[styles.input, hasError && styles.hasError]} />;
 };
 
 const styles = StyleSheet.create({
@@ -15,5 +19,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderColor: theme.colors.neutral.light,
     color: theme.colors.neutral.darker,
+  },
+  hasError: {
+    borderColor: theme.colors.secondary.danger,
+    color: theme.colors.secondary.danger,
   },
 });
