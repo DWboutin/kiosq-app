@@ -5,7 +5,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { GoogleIcon } from "@/components/atoms/icons/google-icon/google-icon";
 import { MetaIcon } from "@/components/atoms/icons/meta-icon/meta-icon";
 import { EmailIcon } from "@/components/atoms/icons/email-icon/email-icon";
-
+import { router } from "expo-router";
 export default function AuthScreen() {
   const handleGoogleAuth = () => {
     // Handle Google authentication
@@ -20,7 +20,7 @@ export default function AuthScreen() {
   };
 
   const handleEmailAuth = () => {
-    // Handle Email authentication
+    router.push("/profile/auth/email-signup");
   };
 
   return (

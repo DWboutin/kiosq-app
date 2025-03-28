@@ -10,6 +10,7 @@ export default function ProfileLayout() {
     <Stack screenOptions={{ headerShown: false }}>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="auth/index" options={{ headerShown: false }} />
+      <Stack.Screen name="auth/email-signup" options={{ headerShown: false }} />
     </Stack>
   );
 }
