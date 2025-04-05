@@ -39,8 +39,12 @@ export const EmailSignupCheckEmail = () => {
         throw verifyError;
       }
 
-      // If verification is successful, redirect to home tab
-      router.replace("/(tabs)/explore");
+      // First replace with profile/auth to reset that stack
+      router.replace("/(tabs)/profile/auth");
+      // Then replace with explore tab
+      setTimeout(() => {
+        router.replace("/(tabs)/explore");
+      }, 10);
     } catch (err: any) {
       console.error("OTP verification error:", err);
       setError(err.message || "Failed to verify code. Please try again.");
