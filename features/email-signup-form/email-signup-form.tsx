@@ -3,29 +3,13 @@ import { FormInputContainer } from "@/components/atoms/form-input-container/form
 import { FormTextInput } from "@/components/atoms/form-text-input/form-text-input";
 import { StyleSheet, View, Text } from "react-native";
 import { useForm, Controller } from "react-hook-form";
+import { useEmailSignupForm } from "./hooks/use-email-signup-form";
 
 export const EmailSignupForm = () => {
   const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    trigger,
-  } = useForm({
-    defaultValues: {
-      name: "",
-      email: "",
-    },
-    mode: "onBlur",
-  });
-
-  const onSubmit = (data: any) => {
-    console.log("Form submitted:", data);
-  };
-
-  const validateForm = async () => {
-    await trigger();
-    console.log("Current errors:", errors);
-  };
+    selectors: { errors, control },
+    actions: { handleFormSubmit },
+  } = useEmailSignupForm();
 
   return (
     <View style={styles.container}>
@@ -80,7 +64,7 @@ export const EmailSignupForm = () => {
       </FormInputContainer>
 
       <View style={styles.buttonContainer}>
-        <Button label="Continuer" onPress={handleSubmit(onSubmit)} />
+        <Button label="Continuer" onPress={handleFormSubmit} />
       </View>
     </View>
   );
