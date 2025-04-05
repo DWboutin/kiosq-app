@@ -23,6 +23,7 @@
 		D3E31766889A4AED9CE18F04 /* Nunito_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5475AAC62304437A93397382 /* Nunito_700Bold.ttf */; };
 		D509566B9A5143BEB182934C /* Inter_400Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C8DF5EF27D74A5BA2510C4E /* Inter_400Regular.ttf */; };
 		EA2ED6A9D7244BC78CE52269 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840C82F32CDC4AEA880C5E22 /* noop-file.swift */; };
+		C65B4F81641F416793375005 /* Inter_500Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D634636CA5E84A998D7400C1 /* Inter_500Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-kiosqapp/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		D634636CA5E84A998D7400C1 /* Inter_500Medium.ttf */ = {isa = PBXFileReference; name = "Inter_500Medium.ttf"; path = "../node_modules/@expo-google-fonts/inter/Inter_500Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				790F0C9726C94C5EAAB4391C /* Lato_700Bold.ttf */,
 				5C8DF5EF27D74A5BA2510C4E /* Inter_400Regular.ttf */,
 				0B8F9EBE7CA0499786075F84 /* Inter_600SemiBold.ttf */,
+				D634636CA5E84A998D7400C1 /* Inter_500Medium.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -241,6 +244,7 @@
 				D509566B9A5143BEB182934C /* Inter_400Regular.ttf in Resources */,
 				25D4E353791341959E9751A9 /* Inter_600SemiBold.ttf in Resources */,
 				763F171425F8AF28B2E66DAB /* PrivacyInfo.xcprivacy in Resources */,
+				C65B4F81641F416793375005 /* Inter_500Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,12 +314,13 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-kiosqapp/Pods-kiosqapp-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RCT-Folly/RCT-Folly_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG/RNSVGFilters.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/boost/boost_privacy.bundle",
@@ -325,12 +330,13 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCT-Folly_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNSVGFilters.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/boost_privacy.bundle",
@@ -412,7 +418,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikaelboutin.kiosqapp;
-				PRODUCT_NAME = kiosqapp;
+				PRODUCT_NAME = "kiosqapp";
 				SWIFT_OBJC_BRIDGING_HEADER = "kiosqapp/kiosqapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -440,7 +446,7 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikaelboutin.kiosqapp;
-				PRODUCT_NAME = kiosqapp;
+				PRODUCT_NAME = "kiosqapp";
 				SWIFT_OBJC_BRIDGING_HEADER = "kiosqapp/kiosqapp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

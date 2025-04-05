@@ -1,4 +1,7 @@
+import { supabase } from "@/lib/supabase";
 import { useForm, Control, FieldErrors, UseFormHandleSubmit } from "react-hook-form";
+import { makeRedirectUri } from "expo-auth-session";
+import { router } from "expo-router";
 
 export interface FormData {
   name: string;
@@ -20,7 +23,10 @@ export interface EmailSignupFormHook {
   actions: EmailSignupFormActions;
 }
 
+const redirectTo = makeRedirectUri();
+
 export function useEmailSignupForm(): EmailSignupFormHook {
+  console.log("redirectTo", redirectTo);
   const {
     control,
     handleSubmit,
@@ -34,8 +40,24 @@ export function useEmailSignupForm(): EmailSignupFormHook {
     mode: "onBlur",
   });
 
-  const handleFormSubmit = handleSubmit((data: FormData) => {
+  const handleFormSubmit = handleSubmit(async (data: FormData) => {
     console.log("Form submitted:", data);
+    const { error } = await supabase.auth.signInWithOtp({
+      email: data.email,
+      options: {
+        emailRedirectTo: `${redirectTo}/profile/auth/(email)/email-auth-confirm`,
+        data: {
+          full_name: data.name,
+        },
+      },
+    });
+
+    if (error) {
+      console.error("Error signing in:", error);
+      return;
+    }
+
+    router.push(`/(tabs)/profile/auth/(email)/email-sent?email=${data.email}`);
   });
 
   const validateForm = async () => {

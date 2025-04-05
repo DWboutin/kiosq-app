@@ -29,6 +29,7 @@
         <data android:scheme="myapp"/>
         <data android:scheme="com.mikaelboutin.kiosqapp"/>
         <data android:scheme="exp+kiosq-app"/>
+        <data android:scheme="kiosq"/>
       </intent-filter>
     </activity>
   </application>

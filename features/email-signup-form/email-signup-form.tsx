@@ -1,8 +1,8 @@
 import { Button } from "@/components/atoms/button/button";
 import { FormInputContainer } from "@/components/atoms/form-input-container/form-input-container";
 import { FormTextInput } from "@/components/atoms/form-text-input/form-text-input";
-import { StyleSheet, View, Text } from "react-native";
-import { useForm, Controller } from "react-hook-form";
+import { StyleSheet, View } from "react-native";
+import { Controller } from "react-hook-form";
 import { useEmailSignupForm } from "./hooks/use-email-signup-form";
 
 export const EmailSignupForm = () => {
