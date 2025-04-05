@@ -13,6 +13,7 @@ import { SearchResultsProducts } from "@/components/sections/search-results-prod
 
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();
+
   // Use our custom hook to manage the bottom sheet
   const { present: presentBottomSheet } = useBottomSheet();
 

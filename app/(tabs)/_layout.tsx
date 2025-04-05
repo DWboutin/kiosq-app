@@ -3,7 +3,6 @@ import React from "react";
 import { Platform } from "react-native";
 
 import { HapticTab } from "@/components/HapticTab";
-import { useColorScheme } from "@/hooks/useColorScheme";
 import { MapPin } from "@/components/atoms/icons/map-pin/map-pin";
 import { ShoppingBag } from "@/components/atoms/icons/shopping-bag/shopping-bag";
 import { MessageBubble } from "@/components/atoms/icons/message-bubble/message-bubble";
@@ -52,28 +51,28 @@ export default function TabLayout() {
           name="explore"
           options={{
             title: "Explorer",
-            tabBarIcon: ({ focused }) => <MapPin focused={focused} />,
+            tabBarIcon: ({ focused }: { focused: boolean }) => <MapPin focused={focused} />,
           }}
         />
         <Tabs.Screen
           name="reservations"
           options={{
             title: "Réservations",
-            tabBarIcon: ({ focused }) => <ShoppingBag focused={focused} />,
+            tabBarIcon: ({ focused }: { focused: boolean }) => <ShoppingBag focused={focused} />,
           }}
         />
         <Tabs.Screen
           name="messages"
           options={{
             title: "Messages",
-            tabBarIcon: ({ focused }) => <MessageBubble focused={focused} />,
+            tabBarIcon: ({ focused }: { focused: boolean }) => <MessageBubble focused={focused} />,
           }}
         />
         <Tabs.Screen
           name="profile"
           options={{
             title: "Profil",
-            tabBarIcon: ({ focused }) => <UserCircle focused={focused} />,
+            tabBarIcon: ({ focused }: { focused: boolean }) => <UserCircle focused={focused} />,
           }}
         />
       </Tabs>

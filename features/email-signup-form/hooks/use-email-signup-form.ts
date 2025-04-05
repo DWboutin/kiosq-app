@@ -23,10 +23,11 @@ export interface EmailSignupFormHook {
   actions: EmailSignupFormActions;
 }
 
-const redirectTo = makeRedirectUri();
+// We don't need redirectTo anymore since we're using OTP codes now
+// const redirectTo = makeRedirectUri();
 
 export function useEmailSignupForm(): EmailSignupFormHook {
-  console.log("redirectTo", redirectTo);
+  // console.log("redirectTo", redirectTo);
   const {
     control,
     handleSubmit,
@@ -45,7 +46,7 @@ export function useEmailSignupForm(): EmailSignupFormHook {
     const { error } = await supabase.auth.signInWithOtp({
       email: data.email,
       options: {
-        emailRedirectTo: `${redirectTo}/profile/auth/(email)/email-auth-confirm`,
+        // Remove emailRedirectTo to use numeric OTP instead of magic link
         data: {
           full_name: data.name,
         },
