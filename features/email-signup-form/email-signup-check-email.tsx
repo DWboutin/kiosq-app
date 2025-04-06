@@ -11,12 +11,17 @@ import { useLocalSearchParams, router } from "expo-router";
 import { theme } from "@/components/atoms/theme/theme";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { useEmailSignupForm } from "@/features/email-signup-form/hooks/use-email-signup-form";
+import { useUserAuth } from "@/hooks/use-user-auth";
 
 export const EmailSignupCheckEmail = () => {
   const { email } = useLocalSearchParams<{ email: string }>();
   const [otp, setOtp] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const {
+    selectors: { isAuthenticating },
+    actions: { connectWithOtp },
+  } = useUserAuth();
 
   const handleVerifyOtp = async () => {
     if (!otp) {
@@ -24,32 +29,19 @@ export const EmailSignupCheckEmail = () => {
       return;
     }
 
-    setLoading(true);
     setError(null);
 
     try {
-      // Verify the OTP code
-      const { error: verifyError } = await supabase.auth.verifyOtp({
-        email: email as string,
-        token: otp,
-        type: "email",
-      });
+      await connectWithOtp(email as string, otp);
 
-      if (verifyError) {
-        throw verifyError;
-      }
-
-      // First replace with profile/auth to reset that stack
       router.replace("/(tabs)/profile/auth");
-      // Then replace with explore tab
+
       setTimeout(() => {
         router.replace("/(tabs)/explore");
       }, 10);
     } catch (err: any) {
       console.error("OTP verification error:", err);
       setError(err.message || "Failed to verify code. Please try again.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -75,8 +67,12 @@ export const EmailSignupCheckEmail = () => {
 
         {error && <Text style={styles.errorText}>{error}</Text>}
 
-        <TouchableOpacity style={styles.verifyButton} onPress={handleVerifyOtp} disabled={loading}>
-          {loading ? (
+        <TouchableOpacity
+          style={styles.verifyButton}
+          onPress={handleVerifyOtp}
+          disabled={isAuthenticating}
+        >
+          {isAuthenticating ? (
             <ActivityIndicator size="small" color={theme.colors.neutral.white} />
           ) : (
             <Text style={styles.buttonText}>Verify</Text>

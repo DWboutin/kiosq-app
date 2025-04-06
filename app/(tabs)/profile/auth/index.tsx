@@ -6,13 +6,9 @@ import { GoogleIcon } from "@/components/atoms/icons/google-icon/google-icon";
 import { MetaIcon } from "@/components/atoms/icons/meta-icon/meta-icon";
 import { EmailIcon } from "@/components/atoms/icons/email-icon/email-icon";
 import { router } from "expo-router";
-import { useSupabaseAuth } from "@/hooks/use-supabase-auth";
-import { useEffect } from "react";
 
 export default function AuthScreen() {
-  const { user, signOut } = useSupabaseAuth();
-
-  console.log("user", user);
+  // const { user, signOut } = useSupabaseAuth();
 
   const handleGoogleAuth = () => {
     // Handle Google authentication

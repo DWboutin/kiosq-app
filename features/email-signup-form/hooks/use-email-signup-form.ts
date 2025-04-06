@@ -1,9 +1,7 @@
-import { supabase } from "@/lib/supabase";
 import { useForm, Control, FieldErrors, UseFormHandleSubmit } from "react-hook-form";
-import { makeRedirectUri } from "expo-auth-session";
 import { router } from "expo-router";
-import { storeUserName } from "@/lib/storage";
-import { useSavedName } from "@/lib/hooks/use-saved-name";
+import { useUserAuth } from "@/hooks/use-user-auth";
+import { useEffect } from "react";
 
 export interface FormData {
   name: string;
@@ -28,15 +26,16 @@ export interface EmailSignupFormHook {
   actions: EmailSignupFormActions;
 }
 
-// We don't need redirectTo anymore since we're using OTP codes now
-// const redirectTo = makeRedirectUri();
-
 export function useEmailSignupForm(): EmailSignupFormHook {
-  const { savedName, hasExistingName, isLoading } = useSavedName();
+  const {
+    selectors: { name: savedName, isAuthenticating },
+    actions: { signInWithOtp, updateName },
+  } = useUserAuth();
 
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
     trigger,
   } = useForm<FormData>({
@@ -48,32 +47,19 @@ export function useEmailSignupForm(): EmailSignupFormHook {
   });
 
   const handleFormSubmit = handleSubmit(async (data: FormData) => {
-    console.log("Form submitted:", data);
+    try {
+      const nameToUse = data.name || savedName || "";
 
-    // Use the saved name if the field is empty and we have a saved name
-    const nameToUse = data.name || savedName || "";
+      await signInWithOtp(data.email, nameToUse);
 
-    const { error } = await supabase.auth.signInWithOtp({
-      email: data.email,
-      options: {
-        // Remove emailRedirectTo to use numeric OTP instead of magic link
-        data: {
-          full_name: nameToUse,
-        },
-      },
-    });
+      if (nameToUse) {
+        updateName(nameToUse);
+      }
 
-    if (error) {
+      router.push(`/(tabs)/profile/auth/(email)/email-sent?email=${data.email}`);
+    } catch (error) {
       console.error("Error signing in:", error);
-      return;
     }
-
-    // Store user name in AsyncStorage if it's provided
-    if (nameToUse) {
-      await storeUserName(nameToUse);
-    }
-
-    router.push(`/(tabs)/profile/auth/(email)/email-sent?email=${data.email}`);
   });
 
   const validateForm = async () => {
@@ -81,13 +67,17 @@ export function useEmailSignupForm(): EmailSignupFormHook {
     console.log("Current errors:", errors);
   };
 
+  useEffect(() => {
+    setValue("name", savedName || "");
+  }, [savedName]);
+
   return {
     selectors: {
       control,
       errors,
-      hasExistingName,
+      hasExistingName: savedName !== null,
       savedName,
-      isLoading,
+      isLoading: isAuthenticating,
     },
     actions: {
       handleFormSubmit,

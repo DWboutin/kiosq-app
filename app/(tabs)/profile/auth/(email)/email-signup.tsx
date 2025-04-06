@@ -1,27 +1,30 @@
-import { Text, View, StyleSheet, ActivityIndicator, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, ActivityIndicator } from "react-native";
 import { theme } from "@/components/atoms/theme/theme";
 import { EmailSignupForm } from "@/features/email-signup-form/email-signup-form";
-import { useSavedName } from "@/lib/hooks/use-saved-name";
+import { useUserAuth } from "@/hooks/use-user-auth";
 
 export default function EmailSignup() {
-  const { savedName, hasExistingName, isLoading, resetUser } = useSavedName();
+  const {
+    selectors: { name: savedName, isAuthenticating },
+    actions: { disconnectUser },
+  } = useUserAuth();
 
   const handleResetUser = async () => {
-    await resetUser();
+    await disconnectUser();
   };
 
   return (
     <View style={styles.content}>
       <View style={styles.header}>
-        {isLoading ? (
+        {isAuthenticating ? (
           <ActivityIndicator color={theme.colors.primary.medium} />
         ) : (
           <>
             <Text style={styles.title}>
-              {hasExistingName ? `Bonjour ${savedName}` : "Entrez vos informations"}
+              {savedName ? `Bonjour ${savedName}` : "Entrez vos informations"}
             </Text>
 
-            {hasExistingName && (
+            {savedName && (
               <Text style={styles.resetText}>
                 Si vous n'êtes pas {savedName} et vous voulez créer un compte{" "}
                 <Text style={styles.resetLink} onPress={handleResetUser}>
@@ -32,7 +35,7 @@ export default function EmailSignup() {
           </>
         )}
         <Text style={styles.subtitle}>
-          Nous vous enverrons un courriel avec un lien de connection.
+          Nous vous enverrons un courriel avec un code à 6 chiffres de connection.
         </Text>
       </View>
       <View style={styles.formContainer}>
