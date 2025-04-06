@@ -1,40 +1,27 @@
-import { View, StyleSheet, Text, Image, TextInput, ActivityIndicator } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import { theme } from "@/components/atoms/theme/theme";
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
-import { useEmailSignupForm } from "@/features/email-signup-form/hooks/use-email-signup-form";
-import { useUserAuth } from "@/hooks/use-user-auth";
+import { Controller } from "react-hook-form";
+import { FormInputContainer } from "@/components/atoms/form-input-container/form-input-container";
+import { FormTextInput } from "@/components/atoms/form-text-input/form-text-input";
 import { Button } from "@/components/atoms/button/button";
+import { useEmailSignupCheckForm } from "./hooks/use-email-signup-check-form";
 
 export const EmailSignupCheckEmail = () => {
-  const { email } = useLocalSearchParams<{ email: string }>();
-  const [otp, setOtp] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [submissionError, setSubmissionError] = useState<string | undefined>(undefined);
+
   const {
-    selectors: { isAuthenticating },
-    actions: { connectWithOtp },
-  } = useUserAuth();
+    selectors: { control, errors, isAuthenticating, email },
+    actions: { handleFormSubmit },
+  } = useEmailSignupCheckForm();
 
-  const handleVerifyOtp = async () => {
-    if (!otp) {
-      setError("Please enter the verification code");
-      return;
-    }
-
-    setError(null);
-
+  const onSubmit = async () => {
+    setSubmissionError(undefined);
     try {
-      await connectWithOtp(email as string, otp);
-
-      router.replace("/(tabs)/profile/auth");
-
-      setTimeout(() => {
-        router.replace("/(tabs)/explore");
-      }, 10);
+      await handleFormSubmit();
     } catch (err: any) {
-      console.error("OTP verification error:", err);
-      setError(err.message || "Failed to verify code. Please try again.");
+      setSubmissionError(err.message || "Échec de la vérification du code. Veuillez réessayer.");
     }
   };
 
@@ -43,6 +30,7 @@ export const EmailSignupCheckEmail = () => {
       <View style={styles.imageContainer}>
         <Image source={require("@/assets/images/auth-email-sent.png")} />
       </View>
+
       <View style={styles.textContainer}>
         <Text style={styles.title}>Regardez vos courriels!</Text>
         <Text style={styles.subtitle}>
@@ -52,21 +40,49 @@ export const EmailSignupCheckEmail = () => {
       </View>
 
       <View style={styles.otpContainer}>
-        <TextInput
-          style={styles.otpInput}
-          value={otp}
-          onChangeText={setOtp}
-          placeholder="Enter code"
-          keyboardType="number-pad"
-          maxLength={6}
-          autoFocus
-        />
-
-        {error && <Text style={styles.errorText}>{error}</Text>}
+        <FormInputContainer
+          label="Code de vérification"
+          error={errors.otp?.message || submissionError}
+        >
+          <Controller
+            name="otp"
+            control={control}
+            rules={{
+              required: {
+                value: true,
+                message: "Veuillez entrer le code de vérification",
+              },
+              pattern: {
+                value: /^[0-9]+$/,
+                message: "Le code doit contenir uniquement des chiffres",
+              },
+              minLength: {
+                value: 6,
+                message: "Le code doit contenir 6 chiffres",
+              },
+              maxLength: {
+                value: 6,
+                message: "Le code doit contenir 6 chiffres",
+              },
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <FormTextInput
+                placeholder="Entrez le code"
+                onChangeText={onChange}
+                onBlur={onBlur}
+                value={value}
+                keyboardType="number-pad"
+                maxLength={6}
+                autoFocus
+                hasError={errors.otp?.message || submissionError}
+              />
+            )}
+          />
+        </FormInputContainer>
 
         <Button
           label="Connectez-vous"
-          onPress={handleVerifyOtp}
+          onPress={onSubmit}
           isLoading={isAuthenticating}
           style={styles.verifyButton}
         />
@@ -127,31 +143,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: theme.colors.neutral.darker,
   },
-  otpInput: {
-    height: 48,
-    borderWidth: 1,
-    borderColor: theme.colors.neutral.light,
-    borderRadius: 8,
-    paddingHorizontal: 16,
-    fontSize: 16,
-    backgroundColor: theme.colors.neutral.white,
-    marginBottom: 16,
-  },
   verifyButton: {
     backgroundColor: theme.colors.primary.medium,
     height: 48,
     borderRadius: 8,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 16,
   },
   buttonText: {
     color: theme.colors.neutral.white,
     fontSize: 16,
     fontFamily: theme.fonts.family.Inter.Semibold,
-  },
-  errorText: {
-    color: theme.colors.secondary.danger,
-    marginBottom: 16,
-    fontSize: 14,
   },
 });
