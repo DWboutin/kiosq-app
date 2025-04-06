@@ -9,7 +9,12 @@ export default function ProfileLayout() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.backButtonContainer}>
-        <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => {
+            router.push("/profile/auth");
+          }}
+        >
           <View style={styles.iconContainer}>
             <ArrowIcon />
           </View>
