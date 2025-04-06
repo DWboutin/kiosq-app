@@ -232,9 +232,6 @@ const styles = StyleSheet.create({
   fullHeightContent: {
     flex: 1,
   },
-  contentContainer: {
-    flex: 1,
-  },
   scrollView: {
     flex: 1,
   },

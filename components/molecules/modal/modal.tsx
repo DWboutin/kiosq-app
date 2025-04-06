@@ -4,7 +4,6 @@ import {
   Modal as RNModal,
   StyleSheet,
   TouchableWithoutFeedback,
-  Animated,
   Dimensions,
   ViewStyle,
   StyleProp,
@@ -59,7 +58,7 @@ export const Modal: React.FC<ModalProps> = ({
   );
 };
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   modalContainer: {
