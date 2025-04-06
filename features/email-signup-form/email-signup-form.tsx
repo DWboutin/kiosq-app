@@ -8,7 +8,7 @@ import { theme } from "@/components/atoms/theme/theme";
 
 export const EmailSignupForm = () => {
   const {
-    selectors: { errors, control, hasExistingName },
+    selectors: { errors, control, hasExistingName, isLoading },
     actions: { handleFormSubmit },
   } = useEmailSignupForm();
 
@@ -67,7 +67,7 @@ export const EmailSignupForm = () => {
       </FormInputContainer>
 
       <View style={styles.buttonContainer}>
-        <Button label="Continuer" onPress={handleFormSubmit} />
+        <Button label="Continuer" onPress={handleFormSubmit} isLoading={isLoading} />
       </View>
     </View>
   );

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 export interface UserAuthSelectors {
   isAuthenticating: boolean;
   isAuthenticated: boolean;
+  isSigningWithOtp: boolean;
   user: User | null;
   session: Session | null;
   name: string | null;
@@ -28,6 +29,7 @@ export interface UserAuthHook {
 export function useUserAuth(): UserAuthHook {
   const isAuthenticating = useUserStore((state) => state.isAuthenticating);
   const isAuthenticated = useUserStore((state) => state.isAuthenticated);
+  const isSigningWithOtp = useUserStore((state) => state.isSigningWithOtp);
   const user = useUserStore((state) => state.user);
   const session = useUserStore((state) => state.session);
   const name = useUserStore((state) => state.name);
@@ -42,7 +44,7 @@ export function useUserAuth(): UserAuthHook {
   };
 
   return {
-    selectors: { isAuthenticating, isAuthenticated, user, session, name, error },
+    selectors: { isAuthenticating, isAuthenticated, isSigningWithOtp, user, session, name, error },
     actions: { connectWithOtp, signInWithOtp, disconnectUser, updateName },
   };
 }

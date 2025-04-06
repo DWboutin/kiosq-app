@@ -16,24 +16,10 @@ export default function EmailSignup() {
   return (
     <View style={styles.content}>
       <View style={styles.header}>
-        {isAuthenticating ? (
-          <ActivityIndicator color={theme.colors.primary.medium} />
-        ) : (
-          <>
-            <Text style={styles.title}>
-              {savedName ? `Bonjour ${savedName}` : "Entrez vos informations"}
-            </Text>
+        <Text style={styles.title}>
+          {savedName ? `Bonjour ${savedName}` : "Entrez vos informations"}
+        </Text>
 
-            {savedName && (
-              <Text style={styles.resetText}>
-                Si vous n'êtes pas {savedName} et vous voulez créer un compte{" "}
-                <Text style={styles.resetLink} onPress={handleResetUser}>
-                  cliquez ici
-                </Text>
-              </Text>
-            )}
-          </>
-        )}
         <Text style={styles.subtitle}>
           Nous vous enverrons un courriel avec un code à 6 chiffres de connection.
         </Text>
@@ -41,10 +27,10 @@ export default function EmailSignup() {
       <View style={styles.formContainer}>
         <EmailSignupForm />
         <View>
-          <Text style={styles.termsText}>
+          <Text style={styles.smallText}>
             En créant mon compte, j'accepte les{" "}
             <Text
-              style={styles.termsLink}
+              style={styles.smallTextLink}
               onPress={() => {
                 console.log("conditions générales");
               }}
@@ -53,7 +39,7 @@ export default function EmailSignup() {
             </Text>{" "}
             et la{" "}
             <Text
-              style={styles.termsLink}
+              style={styles.smallTextLink}
               onPress={() => {
                 console.log("politique de confidentialité");
               }}
@@ -62,6 +48,15 @@ export default function EmailSignup() {
             </Text>
           </Text>
         </View>
+        <View style={styles.separator} />
+        {savedName && (
+          <Text style={styles.smallText}>
+            Si vous n'êtes pas {savedName} et vous voulez créer un compte{" "}
+            <Text style={styles.smallTextLink} onPress={handleResetUser}>
+              cliquez ici
+            </Text>
+          </Text>
+        )}
       </View>
     </View>
   );
@@ -97,26 +92,25 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 20,
   },
-  termsText: {
-    fontSize: 14,
-    fontFamily: theme.fonts.family.Inter.Regular,
-    color: theme.colors.neutral.medium,
-  },
   termsLink: {
     color: theme.colors.primary.medium,
     fontFamily: theme.fonts.family.Inter.Medium,
     fontWeight: "600",
   },
-  resetText: {
+  smallText: {
     fontSize: 14,
     fontFamily: theme.fonts.family.Inter.Regular,
     color: theme.colors.neutral.medium,
     marginTop: 4,
   },
-  resetLink: {
+  smallTextLink: {
     color: theme.colors.primary.medium,
     fontFamily: theme.fonts.family.Inter.Medium,
     fontWeight: "600",
     textDecorationLine: "underline",
+  },
+  separator: {
+    height: 1,
+    backgroundColor: theme.colors.neutral.lightest,
   },
 });

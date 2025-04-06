@@ -1,5 +1,14 @@
 import { theme } from "@/components/atoms/theme/theme";
-import { Pressable, StyleSheet, Text, TouchableOpacity, ViewStyle, TextStyle } from "react-native";
+import {
+  ActivityIndicator,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+  TextStyle,
+} from "react-native";
 
 type ButtonProps = {
   label: string | React.ReactNode;
@@ -8,6 +17,8 @@ type ButtonProps = {
   size?: "lg" | "md" | "sm";
   fitContent?: boolean;
   style?: ViewStyle;
+  isLoading?: boolean;
+  isDisabled?: boolean;
 };
 
 export const Button = ({
@@ -17,22 +28,36 @@ export const Button = ({
   size = "lg",
   fitContent = false,
   style,
+  isLoading = false,
+  isDisabled = false,
 }: ButtonProps) => {
   const activeStyles = variant === "primary" ? primaryButtonStyles : outlineButtonStyles;
   const sizeStyle = buttonSizeStyles[size];
+  const isButtonDisabled = isLoading || isDisabled;
 
-  const buttonLabelStyle = [activeStyles.label, sizeStyle.label as TextStyle];
+  const buttonLabelStyle = [
+    activeStyles.label,
+    sizeStyle.label as TextStyle,
+    isButtonDisabled && disabledStyles.label,
+  ];
 
   const buttonStyle = [
     activeStyles.button,
     fitContent && { alignSelf: "flex-start" as const },
     sizeStyle.button as ViewStyle,
+    isButtonDisabled && disabledStyles.button,
     style,
   ];
 
+  const loaderColor =
+    variant === "primary" ? theme.colors.neutral.white : theme.colors.neutral.black;
+
   return (
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
-      {typeof label === "string" ? <Text style={buttonLabelStyle}>{label}</Text> : label}
+    <TouchableOpacity onPress={onPress} style={buttonStyle} disabled={isButtonDisabled}>
+      <View style={styles.contentContainer}>
+        {typeof label === "string" ? <Text style={buttonLabelStyle}>{label}</Text> : label}
+        {isLoading && <ActivityIndicator size="small" color={loaderColor} />}
+      </View>
     </TouchableOpacity>
   );
 };
@@ -86,7 +111,6 @@ export const buttonStyles = StyleSheet.create({
     borderWidth: 2,
   },
   label: {
-    flex: 1,
     color: theme.colors.neutral.white,
     fontWeight: "bold",
     fontFamily: theme.fonts.family.Lato.Bold,
@@ -116,5 +140,27 @@ const outlineButtonStyles = StyleSheet.create({
   label: {
     ...buttonStyles.label,
     color: theme.colors.neutral.black,
+  },
+});
+
+const disabledStyles = StyleSheet.create({
+  button: {
+    opacity: 0.7,
+  },
+  label: {
+    color: theme.colors.neutral.white,
+  },
+});
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    gap: 8,
+  },
+  labelWithLoader: {
+    marginLeft: 4,
   },
 });

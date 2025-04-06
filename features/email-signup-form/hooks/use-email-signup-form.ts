@@ -28,7 +28,7 @@ export interface EmailSignupFormHook {
 
 export function useEmailSignupForm(): EmailSignupFormHook {
   const {
-    selectors: { name: savedName, isAuthenticating },
+    selectors: { name: savedName, isSigningWithOtp },
     actions: { signInWithOtp, updateName },
   } = useUserAuth();
 
@@ -77,7 +77,7 @@ export function useEmailSignupForm(): EmailSignupFormHook {
       errors,
       hasExistingName: savedName !== null,
       savedName,
-      isLoading: isAuthenticating,
+      isLoading: isSigningWithOtp,
     },
     actions: {
       handleFormSubmit,

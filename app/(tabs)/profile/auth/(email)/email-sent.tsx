@@ -2,9 +2,5 @@ import { EmailSignupCheckEmail } from "@/features/email-signup-form/email-signup
 import { View } from "react-native";
 
 export default function EmailSent() {
-  return (
-    <View>
-      <EmailSignupCheckEmail />
-    </View>
-  );
+  return <EmailSignupCheckEmail />;
 }

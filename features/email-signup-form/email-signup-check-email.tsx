@@ -1,18 +1,11 @@
-import {
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  TextInput,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
+import { View, StyleSheet, Text, Image, TextInput, ActivityIndicator } from "react-native";
 import { useLocalSearchParams, router } from "expo-router";
 import { theme } from "@/components/atoms/theme/theme";
 import { useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useEmailSignupForm } from "@/features/email-signup-form/hooks/use-email-signup-form";
 import { useUserAuth } from "@/hooks/use-user-auth";
+import { Button } from "@/components/atoms/button/button";
 
 export const EmailSignupCheckEmail = () => {
   const { email } = useLocalSearchParams<{ email: string }>();
@@ -50,11 +43,15 @@ export const EmailSignupCheckEmail = () => {
       <View style={styles.imageContainer}>
         <Image source={require("@/assets/images/auth-email-sent.png")} />
       </View>
-      <Text style={styles.emailText}>{email}</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>Regardez vos courriels!</Text>
+        <Text style={styles.subtitle}>
+          Un message a été envoyé à <Text style={styles.emailHighlight}>{email}</Text> avec un lien
+          de connection.
+        </Text>
+      </View>
 
       <View style={styles.otpContainer}>
-        <Text style={styles.instructionText}>Enter the verification code sent to your email</Text>
-
         <TextInput
           style={styles.otpInput}
           value={otp}
@@ -67,17 +64,12 @@ export const EmailSignupCheckEmail = () => {
 
         {error && <Text style={styles.errorText}>{error}</Text>}
 
-        <TouchableOpacity
-          style={styles.verifyButton}
+        <Button
+          label="Connectez-vous"
           onPress={handleVerifyOtp}
-          disabled={isAuthenticating}
-        >
-          {isAuthenticating ? (
-            <ActivityIndicator size="small" color={theme.colors.neutral.white} />
-          ) : (
-            <Text style={styles.buttonText}>Verify</Text>
-          )}
-        </TouchableOpacity>
+          isLoading={isAuthenticating}
+          style={styles.verifyButton}
+        />
       </View>
     </View>
   );
@@ -86,14 +78,38 @@ export const EmailSignupCheckEmail = () => {
 const styles = StyleSheet.create({
   container: {
     display: "flex",
+    flex: 1,
     flexDirection: "column",
     gap: 20,
-    padding: 20,
+    paddingHorizontal: 20,
+    backgroundColor: theme.colors.neutral.white,
   },
   imageContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  textContainer: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 12,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "600",
+    fontFamily: theme.fonts.family.Inter.Semibold,
+    color: theme.colors.neutral.black,
+    textAlign: "center",
+  },
+  subtitle: {
+    fontSize: 16,
+    fontFamily: theme.fonts.family.Inter.Regular,
+    color: theme.colors.neutral.medium,
+    textAlign: "center",
+  },
+  emailHighlight: {
+    color: theme.colors.primary.medium,
+    fontFamily: theme.fonts.family.Inter.Medium,
   },
   emailText: {
     fontSize: 16,
